@@ -13,23 +13,19 @@
       href="https://fonts.googleapis.com/css?family=Noto+Serif+SC&display=swap" />
 </noscript>
 
-{{ $htoptions := (dict "targetPath" "/css/hugo-tufte.min.css" "outputStyle" "compressed" "enableSourceMap" true) }}
-{{ $htscss := resources.Get "scss/hugo-tufte.scss" }}
-{{ if $htscss }}
-  {{ $htstyle := $htscss | resources.ExecuteAsTemplate "main.scss" .  | css.Sass $htoptions }}
-  {{ if $htstyle }}
-    <link rel="stylesheet" href="{{ $htstyle.Permalink | absURL }}">
-  {{ end }}
-{{ end }}
+{{- $htoptions := (dict "targetPath" "/css/hugo-tufte.min.css" "outputStyle" "compressed" "enableSourceMap" true) -}}
+{{- with resources.Get "scss/hugo-tufte.scss" -}}
+  {{- with . | resources.ExecuteAsTemplate "main.scss" $  | css.Sass $htoptions -}}
+    <link rel="stylesheet" href="{{ .Permalink | absURL }}">
+  {{- end -}}
+{{- end -}}
 
-{{ $ht_o_options := (dict "targetPath" "/css/hugo-tufte-options.min.css" "outputStyle" "compressed" "enableSourceMap" true) }}
-{{ $ht_o_scss := resources.Get "scss/hugo-tufte-options.scss" }}
-{{ if $ht_o_scss }}
-  {{ $ht_o_style := $ht_o_scss | resources.ExecuteAsTemplate "main.scss" .  | css.Sass $ht_o_options }}
-  {{ if $ht_o_style }}
-    <link rel="stylesheet" href="{{ $ht_o_style.Permalink | absURL }}">
-  {{ end }}
-{{ end }}
+{{- $ht_o_options := (dict "targetPath" "/css/hugo-tufte-options.min.css" "outputStyle" "compressed" "enableSourceMap" true) -}}
+{{- with resources.Get "scss/hugo-tufte-options.scss" -}}
+  {{- with . | resources.ExecuteAsTemplate "main.scss" $  | css.Sass $ht_o_options -}}
+    <link rel="stylesheet" href="{{ .Permalink | absURL }}">
+  {{- end -}}
+{{- end -}}
 
 <link rel="stylesheet" href="{{ "/css/hugo-tufte-override.css" | absURL }}">
 
