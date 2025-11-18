@@ -1,8 +1,9 @@
 # For GitHub Pages project site, update with your actual URL
 # Example: baseURL: "https://borntojesus.github.io/tom-griffing-theme-site/"
-baseURL: "https://borntojesus.github.io/tom-griffing-theme-site/"
-relativeURLs: false
-canonifyURLs: true
+# For local development and Netlify, use relative URLs
+baseURL: "/"
+relativeURLs: true
+canonifyURLs: false
 
 languageCode: "en-US"
 title: "Tom Griffin"
