@@ -31,12 +31,6 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
-      - name: Clone theme if not present
-        run: |
-          if [ ! -d "themes/hugo-tufte" ]; then
-            git clone https://github.com/loikein/hugo-tufte.git themes/hugo-tufte
-          fi
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
