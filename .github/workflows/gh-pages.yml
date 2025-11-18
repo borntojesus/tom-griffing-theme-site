@@ -36,11 +36,14 @@ jobs:
 
       - name: Build with Hugo
         run: |
+          set +e
           hugo --minify --gc 2>&1 | grep -v "deprecated" || true
-          if [ ! -d "public" ]; then
-            echo "Error: public directory was not created"
+          set -e
+          if [ ! -d "public" ] || [ ! -f "public/index.html" ]; then
+            echo "Error: public directory or index.html was not created"
             exit 1
           fi
+          echo "Build successful - found $(find public -type f | wc -l) files"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
