@@ -1,7 +1,8 @@
-# Using relative URLs - works both locally and on GitHub Pages
-baseURL: "/"
-relativeURLs: true
-canonifyURLs: false
+# For GitHub Pages project site, update with your actual URL
+# Example: baseURL: "https://borntojesus.github.io/tom-griffing-theme-site/"
+baseURL: "https://borntojesus.github.io/tom-griffing-theme-site/"
+relativeURLs: false
+canonifyURLs: true
 
 languageCode: "en-US"
 title: "Tom Griffin"
