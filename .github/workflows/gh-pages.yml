@@ -35,11 +35,9 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Build with Hugo
-        env:
-          HUGO_BASEURL: "https://borntojesus.github.io/tom-griffing-theme-site/"
         run: |
           set +e
-          hugo --minify --gc --baseURL="$HUGO_BASEURL" --relativeURLs=false 2>&1 | grep -v "deprecated" || true
+          hugo --minify --gc --config config.yaml,config.github-pages.yaml 2>&1 | grep -v "deprecated" || true
           set -e
           if [ ! -d "public" ] || [ ! -f "public/index.html" ]; then
             echo "Error: public directory or index.html was not created"
